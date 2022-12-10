@@ -1,4 +1,4 @@
-import { Box, List, ListItem, ListSubheader, Typography } from "@mui/material";
+import { Box, ListSubheader, Typography, ListItem, List } from "@mui/material";
 import { HintType } from "@/types";
 import HelpIcon from "@mui/icons-material/Help";
 import { DragHandle } from "@mui/icons-material";
@@ -11,33 +11,40 @@ export default function HintList({ hintList }: HintListProps) {
   return (
     <Box display="flex" justifyContent="center">
       <List
-        sx={{ width: "100%", maxWidth: 700, bgcolor: "background.paper" }}
+        sx={{
+          width: "90%",
+          maxWidth: "1500px",
+          bgcolor: "background.paper",
+        }}
         component="nav"
         aria-labelledby="nested-list-subheader"
         subheader={<ListSubheader component="div">Hints</ListSubheader>}
       >
         {hintList.map((hint, idx) => {
           return (
-            <Box
-              border="1px solid lightgray"
-              borderRadius="20px"
-              my={2}
+            <ListItem
+              sx={{
+                display: "inline-flex",
+                width: "48%",
+                border: "1px solid lightgray",
+                borderRadius: "15px",
+                mb: 2,
+                mr: 2,
+              }}
               key={`hint-${idx}`}
             >
-              <ListItem>
-                <Typography textAlign="center" width="300px" fontSize="30px">
-                  {hint.first}
-                </Typography>
-                <HelpIcon sx={{ m: 2 }} />
-                <Typography textAlign="center" width="300px" fontSize="30px">
-                  {hint.second}
-                </Typography>
-                <DragHandle sx={{ m: 2 }} />
-                <Typography textAlign="center" width="300px" fontSize="30px">
-                  {hint.result}
-                </Typography>
-              </ListItem>
-            </Box>
+              <Typography textAlign="center" width="300px" fontSize="30px">
+                {hint.first}
+              </Typography>
+              <HelpIcon sx={{ m: 2 }} />
+              <Typography textAlign="center" width="300px" fontSize="30px">
+                {hint.second}
+              </Typography>
+              <DragHandle sx={{ m: 2 }} />
+              <Typography textAlign="center" width="300px" fontSize="30px">
+                {hint.result}
+              </Typography>
+            </ListItem>
           );
         })}
       </List>

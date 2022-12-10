@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
-import { Box, Radio, RadioGroup, TextField, Typography } from "@mui/material";
+import { useState } from "react";
+import { Box, ListItem, Radio, RadioGroup, Typography } from "@mui/material";
 import HintInput from "../HintInput/index";
 import HintList from "../HintList";
 import { HintType } from "@/types";
+import TargetProblem from "../TargetProblem";
 
 export default function Main() {
   const [hintList, setHintList] = useState<HintType[]>([]);
@@ -32,7 +33,7 @@ export default function Main() {
   });
 
   return (
-    <>
+    <Box>
       <Typography fontFamily="Zen Dots" variant="h2">
         MYSTERY SIGN
       </Typography>
@@ -57,9 +58,13 @@ export default function Main() {
           <Radio {...controlProps("11")} />
         </RadioGroup>
       </Box>
+      <Box display="flex" justifyContent="center" sx={{ mt: 2 }}>
+        <TargetProblem round={Number(round)} />
+      </Box>
+
       <Box
         sx={{
-          mt: 8,
+          mt: 6,
         }}
         display="flex"
         justifyContent="center"
@@ -70,6 +75,6 @@ export default function Main() {
       <footer style={{ position: "absolute", bottom: 1, left: "1%" }}>
         Made by 안민규
       </footer>
-    </>
+    </Box>
   );
 }
