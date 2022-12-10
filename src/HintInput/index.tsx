@@ -2,6 +2,7 @@ import { Box, TextField, Button } from "@mui/material";
 import HelpIcon from "@mui/icons-material/Help";
 import { useState } from "react";
 import { HintType } from "@/types";
+import useMysterySign from "../hooks/useMysterySign/index";
 
 interface HintInputProps {
   onEnterHint: (hint: HintType) => void;
@@ -16,6 +17,8 @@ export default function HintInput({ onEnterHint }: HintInputProps) {
     second: "",
   });
   const [isPlayerOneFirst, setPlayerOneFirst] = useState(true);
+
+  const result = useMysterySign({ ...enteredValue, round: 1 });
 
   return (
     <Box
@@ -53,7 +56,10 @@ export default function HintInput({ onEnterHint }: HintInputProps) {
         onClick={() => {
           setEnteredValue({ first: "", second: "" });
           setPlayerOneFirst(!isPlayerOneFirst);
-          onEnterHint(enteredValue);
+          onEnterHint({
+            ...enteredValue,
+            result,
+          });
         }}
       >
         입력

@@ -3,18 +3,12 @@ import { Box, Typography } from "@mui/material";
 import HintInput from "../HintInput/index";
 import HintList from "../HintList";
 import { HintType } from "@/types";
-import useMysterySign from "../hooks/useMysterySign";
 
 export default function Main() {
   const [hintList, setHintList] = useState<HintType[]>([]);
   const [round, setRound] = useState(1);
 
   const useHandleEnterHint = (hint: HintType) => {
-    const result = useMysterySign({
-      first: hint.first,
-      second: hint.second,
-      round,
-    });
     setHintList([...hintList, hint]);
   };
 

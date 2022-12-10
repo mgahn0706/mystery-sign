@@ -1,4 +1,4 @@
-import { prob1 } from "@/MysterySignFunction";
+import prob1 from "../../MysterySignFunction";
 
 interface useMysterySignProps {
   first: string;
@@ -13,8 +13,8 @@ export default function useMysterySign({
 }: useMysterySignProps) {
   switch (round) {
     case 1:
-      return prob1(first, second);
+      return prob1({ first, second });
     default:
-      return "알수 없는 에러";
+      return -1;
   }
 }

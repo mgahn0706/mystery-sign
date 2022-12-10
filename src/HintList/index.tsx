@@ -35,7 +35,7 @@ export default function HintList({ hintList }: HintListProps) {
                 </Typography>
                 <DragHandle sx={{ m: 2 }} />
                 <Typography textAlign="center" width="300px" fontSize="30px">
-                  {Number(hint.second) * 2}
+                  {hint.result}
                 </Typography>
               </ListItem>
             </Box>
