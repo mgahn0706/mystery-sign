@@ -33,7 +33,7 @@ export default function Main() {
   });
 
   return (
-    <Box>
+    <Box sx={{ mt: 2 }}>
       <Typography fontFamily="Zen Dots" variant="h2">
         MYSTERY SIGN
       </Typography>
