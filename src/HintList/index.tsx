@@ -17,10 +17,15 @@ export default function HintList({ hintList }: HintListProps) {
         aria-labelledby="nested-list-subheader"
         subheader={<ListSubheader component="div">Hints</ListSubheader>}
       >
-        {hintList.map((hint) => {
+        {hintList.map((hint, idx) => {
           return (
-            <Box border="1px solid lightgray" borderRadius="20px" my={2}>
-              <ListItem key={hint.first}>
+            <Box
+              border="1px solid lightgray"
+              borderRadius="20px"
+              my={2}
+              key={`hint-${idx}`}
+            >
+              <ListItem>
                 <Typography textAlign="center" width="300px" fontSize="30px">
                   {hint.first}
                 </Typography>
