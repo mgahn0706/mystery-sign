@@ -67,6 +67,9 @@ export default function Main() {
         <HintInput round={round} onEnterHint={useHandleEnterHint} />
       </Box>
       <HintList hintList={hintList} />
+      <footer style={{ position: "absolute", bottom: 1, left: "1%" }}>
+        Made by 안민규
+      </footer>
     </>
   );
 }

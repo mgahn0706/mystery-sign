@@ -3,6 +3,8 @@ import HelpIcon from "@mui/icons-material/Help";
 import { useState } from "react";
 import { HintType } from "@/types";
 import useMysterySign from "../hooks/useMysterySign/index";
+import Timer from "./Timer";
+import useTimer from "../hooks/useTimer";
 
 interface HintInputProps {
   onEnterHint: (hint: HintType) => void;
@@ -22,6 +24,7 @@ export default function HintInput({ onEnterHint, round }: HintInputProps) {
   );
 
   const result = useMysterySign({ ...enteredValue, round: round });
+  const { remainingTime, resetTimer } = useTimer();
 
   return (
     <Box display="flex">
@@ -47,11 +50,13 @@ export default function HintInput({ onEnterHint, round }: HintInputProps) {
         value={enteredValue.second}
       />
       <Button
+        disabled={remainingTime > 0}
         sx={{
           ml: 2,
         }}
         variant="outlined"
         onClick={() => {
+          resetTimer();
           setEnteredValue({ first: "", second: "" });
           setPlayerOneFirst(!isPlayerOneFirst);
           onEnterHint({
@@ -62,6 +67,7 @@ export default function HintInput({ onEnterHint, round }: HintInputProps) {
       >
         입력
       </Button>
+      <Timer remainingTime={remainingTime} />
     </Box>
   );
 }
