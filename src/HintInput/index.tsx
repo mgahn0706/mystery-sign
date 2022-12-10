@@ -23,6 +23,13 @@ export default function HintInput({ onEnterHint, round }: HintInputProps) {
     Number(round) % 2 === 1
   );
 
+  const validateInput = (input: string) => {
+    if (!input) {
+      return true;
+    }
+    return /^[0-9]+$/.test(input);
+  };
+
   const result = useMysterySign({ ...enteredValue, round: round });
   const { remainingTime, resetTimer } = useTimer();
 
@@ -30,9 +37,12 @@ export default function HintInput({ onEnterHint, round }: HintInputProps) {
     <Box display="flex">
       <TextField
         id="outlined-basic"
+        error={!validateInput(enteredValue.first)}
         label={isPlayerOneFirst ? "선 플레이어" : "후 플레이어"}
         onChange={(e) => {
-          setEnteredValue({ ...enteredValue, first: e.target.value });
+          if (e.target.value !== "0") {
+            setEnteredValue({ ...enteredValue, first: e.target.value });
+          }
         }}
         value={enteredValue.first}
       />
@@ -43,14 +53,23 @@ export default function HintInput({ onEnterHint, round }: HintInputProps) {
       />
       <TextField
         id="outlined-basic"
+        error={!validateInput(enteredValue.second)}
         label={isPlayerOneFirst ? "후 플레이어" : "선 플레이어"}
         onChange={(e) => {
-          setEnteredValue({ ...enteredValue, second: e.target.value });
+          if (e.target.value !== "0") {
+            setEnteredValue({ ...enteredValue, second: e.target.value });
+          }
         }}
         value={enteredValue.second}
       />
       <Button
-        disabled={remainingTime > 0}
+        disabled={
+          remainingTime > 0 ||
+          !validateInput(enteredValue.first) ||
+          !validateInput(enteredValue.second) ||
+          !enteredValue.first ||
+          !enteredValue.second
+        }
         sx={{
           ml: 2,
         }}

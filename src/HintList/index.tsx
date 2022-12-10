@@ -9,22 +9,23 @@ interface HintListProps {
 
 export default function HintList({ hintList }: HintListProps) {
   return (
-    <Box display="flex" justifyContent="center">
+    <Box display="flex" justifyContent="center" mt={4}>
       <List
         sx={{
           width: "90%",
           maxWidth: "1500px",
           bgcolor: "background.paper",
+          display: "flex",
+          flex: "0 300px",
+          flexWrap: "wrap",
         }}
         component="nav"
         aria-labelledby="nested-list-subheader"
-        subheader={<ListSubheader component="div">Hints</ListSubheader>}
       >
         {hintList.map((hint, idx) => {
           return (
             <ListItem
               sx={{
-                display: "inline-flex",
                 width: "48%",
                 border: "1px solid lightgray",
                 borderRadius: "15px",
@@ -33,15 +34,27 @@ export default function HintList({ hintList }: HintListProps) {
               }}
               key={`hint-${idx}`}
             >
-              <Typography textAlign="center" width="300px" fontSize="30px">
+              <Typography
+                textAlign="center"
+                width="300px"
+                fontSize={hint.first.length < 7 ? "30px" : "15px"}
+              >
                 {hint.first}
               </Typography>
               <HelpIcon sx={{ m: 2 }} />
-              <Typography textAlign="center" width="300px" fontSize="30px">
+              <Typography
+                textAlign="center"
+                width="300px"
+                fontSize={hint.second.length < 7 ? "30px" : "15px"}
+              >
                 {hint.second}
               </Typography>
               <DragHandle sx={{ m: 2 }} />
-              <Typography textAlign="center" width="300px" fontSize="30px">
+              <Typography
+                textAlign="center"
+                width="300px"
+                fontSize={hint.result < 10000000 ? "30px" : "15px"}
+              >
                 {hint.result}
               </Typography>
             </ListItem>

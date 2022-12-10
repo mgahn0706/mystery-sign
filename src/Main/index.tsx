@@ -59,7 +59,7 @@ export default function Main() {
         </RadioGroup>
       </Box>
       <Box display="flex" justifyContent="center" sx={{ mt: 2 }}>
-        <TargetProblem round={Number(round)} />
+        <TargetProblem round={round} />
       </Box>
 
       <Box
