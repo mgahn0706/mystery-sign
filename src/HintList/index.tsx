@@ -8,7 +8,6 @@ interface HintListProps {
 }
 
 export default function HintList({ hintList }: HintListProps) {
-  console.log(hintList);
   return (
     <Box display="flex" justifyContent="center">
       <List

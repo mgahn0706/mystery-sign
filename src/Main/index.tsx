@@ -6,7 +6,7 @@ import { HintType } from "@/types";
 
 export default function Main() {
   const [hintList, setHintList] = useState<HintType[]>([]);
-  const [round, setRound] = useState(1);
+  const [round, setRound] = useState("1");
   //라운드 변경 시 확인 모달을 띄우고, 확인 시 힌트 리스트를 지우고 라운드를 변경합니다.
   const handleChange = (event) => {
     if (
@@ -64,7 +64,7 @@ export default function Main() {
         display="flex"
         justifyContent="center"
       >
-        <HintInput onEnterHint={useHandleEnterHint} />
+        <HintInput round={round} onEnterHint={useHandleEnterHint} />
       </Box>
       <HintList hintList={hintList} />
     </>

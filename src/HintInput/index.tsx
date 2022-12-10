@@ -6,9 +6,10 @@ import useMysterySign from "../hooks/useMysterySign/index";
 
 interface HintInputProps {
   onEnterHint: (hint: HintType) => void;
+  round: string;
 }
 
-export default function HintInput({ onEnterHint }: HintInputProps) {
+export default function HintInput({ onEnterHint, round }: HintInputProps) {
   const [enteredValue, setEnteredValue] = useState<{
     first: string;
     second: string;
@@ -16,9 +17,11 @@ export default function HintInput({ onEnterHint }: HintInputProps) {
     first: "",
     second: "",
   });
-  const [isPlayerOneFirst, setPlayerOneFirst] = useState(true);
+  const [isPlayerOneFirst, setPlayerOneFirst] = useState(
+    Number(round) % 2 === 1
+  );
 
-  const result = useMysterySign({ ...enteredValue, round: 1 });
+  const result = useMysterySign({ ...enteredValue, round: round });
 
   return (
     <Box display="flex">
