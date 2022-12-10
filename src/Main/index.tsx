@@ -13,7 +13,12 @@ export default function Main() {
 
   return (
     <>
-      <Typography variant="h2">MYSTERY SIGN</Typography>
+      <Typography fontFamily="Zen Dots" variant="h2">
+        MYSTERY SIGN
+      </Typography>
+      <Typography fontFamily="Zen Dots" variant="body1">
+        추러스 12월 정기모임
+      </Typography>
       <Box display="flex" justifyContent="center">
         <HintInput onEnterHint={handleEnterHint} />
       </Box>
