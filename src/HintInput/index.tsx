@@ -21,12 +21,7 @@ export default function HintInput({ onEnterHint }: HintInputProps) {
   const result = useMysterySign({ ...enteredValue, round: 1 });
 
   return (
-    <Box
-      display="flex"
-      sx={{
-        mt: 8,
-      }}
-    >
+    <Box display="flex">
       <TextField
         id="outlined-basic"
         label={isPlayerOneFirst ? "선 플레이어" : "후 플레이어"}

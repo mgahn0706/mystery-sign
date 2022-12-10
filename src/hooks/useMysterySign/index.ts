@@ -1,4 +1,4 @@
-import prob1 from "../../MysterySignFunction";
+import { prob1 } from "../../MysterySignFunction";
 
 interface useMysterySignProps {
   first: string;

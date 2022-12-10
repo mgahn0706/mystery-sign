@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Box, Typography } from "@mui/material";
+import { useEffect, useState } from "react";
+import { Box, Radio, RadioGroup, TextField, Typography } from "@mui/material";
 import HintInput from "../HintInput/index";
 import HintList from "../HintList";
 import { HintType } from "@/types";
@@ -7,10 +7,29 @@ import { HintType } from "@/types";
 export default function Main() {
   const [hintList, setHintList] = useState<HintType[]>([]);
   const [round, setRound] = useState(1);
+  //라운드 변경 시 확인 모달을 띄우고, 확인 시 힌트 리스트를 지우고 라운드를 변경합니다.
+  const handleChange = (event) => {
+    if (
+      window.confirm(
+        `${round}라운드롤 종료하고 ${event.target.value}라운드를 시작할까요?`
+      )
+    ) {
+      setRound(event.target.value);
+      setHintList([]);
+    }
+  };
 
   const useHandleEnterHint = (hint: HintType) => {
     setHintList([...hintList, hint]);
   };
+
+  const controlProps = (item: string) => ({
+    checked: `${round}` === item,
+    onChange: handleChange,
+    value: item,
+    name: "color-radio-button-demo",
+    inputProps: { "aria-label": item },
+  });
 
   return (
     <>
@@ -18,9 +37,33 @@ export default function Main() {
         MYSTERY SIGN
       </Typography>
       <Typography fontFamily="Zen Dots" variant="body1">
+        Round {round}
+      </Typography>
+      <Typography mt={1} fontFamily="Zen Dots" variant="body2">
         추러스 12월 정기모임
       </Typography>
-      <Box display="flex" justifyContent="center">
+      <Box sx={{ mt: 2 }} display="flex" justifyContent="center">
+        <RadioGroup row name="use-radio-group" defaultValue="first">
+          <Radio {...controlProps("1")} />
+          <Radio {...controlProps("2")} />
+          <Radio {...controlProps("3")} />
+          <Radio {...controlProps("4")} />
+          <Radio {...controlProps("5")} />
+          <Radio {...controlProps("6")} />
+          <Radio {...controlProps("7")} />
+          <Radio {...controlProps("8")} />
+          <Radio {...controlProps("9")} />
+          <Radio {...controlProps("10")} />
+          <Radio {...controlProps("11")} />
+        </RadioGroup>
+      </Box>
+      <Box
+        sx={{
+          mt: 8,
+        }}
+        display="flex"
+        justifyContent="center"
+      >
         <HintInput onEnterHint={useHandleEnterHint} />
       </Box>
       <HintList hintList={hintList} />
