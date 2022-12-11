@@ -20,7 +20,7 @@ export default function Main() {
     }
   };
 
-  const useHandleEnterHint = (hint: HintType) => {
+  const handleEnterHint = (hint: HintType) => {
     setHintList([...hintList, hint]);
   };
 
@@ -69,7 +69,7 @@ export default function Main() {
         display="flex"
         justifyContent="center"
       >
-        <HintInput round={round} onEnterHint={useHandleEnterHint} />
+        <HintInput round={round} onEnterHint={handleEnterHint} />
       </Box>
       <HintList hintList={hintList} />
       <footer style={{ position: "absolute", bottom: 1, left: "1%" }}>

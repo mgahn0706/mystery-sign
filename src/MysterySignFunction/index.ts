@@ -1,9 +1,17 @@
 export const prob1 = ({ first, second }: { first: string; second: string }) => {
-  return Number(first) + Number(second);
+  return Number(first) * (Number(second) - 1);
 };
 
 export const prob2 = ({ first, second }: { first: string; second: string }) => {
-  return Number(first) - Number(second);
+  let result = 0;
+  for (let i = 0; i < first.length; i++) {
+    result += Number(first[i]);
+  }
+
+  for (let j = 0; j < second.length; j++) {
+    result += Number(second[j]);
+  }
+  return result;
 };
 
 export const prob3 = ({ first, second }: { first: string; second: string }) => {
