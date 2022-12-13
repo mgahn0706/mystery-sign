@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Box, ListItem, Radio, RadioGroup, Typography } from "@mui/material";
+import { Box, Radio, RadioGroup, Typography } from "@mui/material";
+import { yellow } from "@mui/material/colors";
 import HintInput from "../HintInput/index";
 import HintList from "../HintList";
 import { HintType } from "@/types";
@@ -54,8 +55,24 @@ export default function Main() {
           <Radio {...controlProps("7")} />
           <Radio {...controlProps("8")} />
           <Radio {...controlProps("9")} />
-          <Radio {...controlProps("10")} />
-          <Radio {...controlProps("11")} />
+          <Radio
+            {...controlProps("10")}
+            sx={{
+              color: yellow[800],
+              "&.Mui-checked": {
+                color: yellow[600],
+              },
+            }}
+          />
+          <Radio
+            {...controlProps("11")}
+            sx={{
+              color: yellow[800],
+              "&.Mui-checked": {
+                color: yellow[600],
+              },
+            }}
+          />
         </RadioGroup>
       </Box>
       <Box display="flex" justifyContent="center" sx={{ mt: 2 }}>

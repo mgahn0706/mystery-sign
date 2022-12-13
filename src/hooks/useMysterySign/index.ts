@@ -47,6 +47,6 @@ export default function useMysterySign({
     case "11":
       return prob11({ first, second });
     default:
-      return Infinity;
+      return "Error";
   }
 }

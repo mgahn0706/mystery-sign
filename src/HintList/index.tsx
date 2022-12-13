@@ -53,7 +53,13 @@ export default function HintList({ hintList }: HintListProps) {
               <Typography
                 textAlign="center"
                 width="300px"
-                fontSize={hint.result < 10000000 ? "30px" : "15px"}
+                fontSize={
+                  hint.result.length < 7
+                    ? "30px"
+                    : hint.result.length < 10
+                    ? "15px"
+                    : "12px"
+                }
               >
                 {hint.result}
               </Typography>

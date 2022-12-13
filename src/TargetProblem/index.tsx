@@ -11,6 +11,7 @@ import { DragHandle } from "@mui/icons-material";
 import TargetProblemData from "./fixtures";
 import { useEffect, useState } from "react";
 import useMysterySign from "../hooks/useMysterySign";
+import useTimer from "../hooks/useTimer";
 
 export default function TargetProblem({ round }: { round: string }) {
   const [enteredAnswer, setEnteredAnswer] = useState("");
@@ -51,18 +52,25 @@ export default function TargetProblem({ round }: { round: string }) {
             {TargetProblemData[round].second}
           </Typography>
           <DragHandle sx={{ m: 2 }} />
-          <TextField
-            sx={{ width: "120px", fontSize: "30px" }}
-            onChange={(e) => {
-              if (
-                (/^[0-9]+$/.test(e.target.value) && e.target.value !== "0") ||
-                !e.target.value
-              ) {
-                setEnteredAnswer(e.target.value);
-              }
-            }}
-            value={enteredAnswer}
-          />
+          {!isAnswerSubmitted && (
+            <TextField
+              sx={{ width: "120px", fontSize: "30px" }}
+              onChange={(e) => {
+                if (
+                  (/^[0-9]+$/.test(e.target.value) && e.target.value !== "0") ||
+                  !e.target.value
+                ) {
+                  setEnteredAnswer(e.target.value);
+                }
+              }}
+              value={enteredAnswer}
+            />
+          )}
+          {isAnswerSubmitted && (
+            <Typography textAlign="center" width="100px" fontSize="30px">
+              {answer}
+            </Typography>
+          )}
         </ListItem>
 
         <Button
@@ -70,7 +78,7 @@ export default function TargetProblem({ round }: { round: string }) {
           sx={{ height: "20px", fontSize: "10px" }}
           variant="outlined"
           onClick={() => {
-            if (answer === Number(enteredAnswer)) {
+            if (answer === enteredAnswer) {
               window.alert("정답입니다! 승점 +1");
               setAnswerSubmitted(true);
             } else {
