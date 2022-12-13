@@ -13,7 +13,7 @@ export default function Main() {
   const handleChange = (event) => {
     if (
       window.confirm(
-        `${round}라운드롤 종료하고 ${event.target.value}라운드를 시작할까요?`
+        `${round}라운드를 종료하고 ${event.target.value}라운드를 시작할까요?`
       )
     ) {
       setRound(event.target.value);
