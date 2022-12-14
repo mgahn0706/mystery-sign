@@ -116,17 +116,17 @@ export const prob10 = ({
   first: string;
   second: string;
 }) => {
-  let result = 0;
+  const firstSqrt = Math.floor(Math.sqrt(Number(first)));
+  const secondSqrt = Math.floor(Math.sqrt(Number(second)));
 
-  const largerNum = Math.max(Number(first), Number(second));
-  const smallerNum = Math.min(Number(first), Number(second));
+  const isSqrt = (num: number) => {
+    return Math.sqrt(num) % 1 === 0;
+  };
 
-  for (let i = smallerNum + 1; i < largerNum; i++) {
-    if (Math.sqrt(i) % 1 === 0) {
-      result++;
-    }
-  }
-  return String(result);
+  const edgeCaseFirst = isSqrt(Number(first)) ? 1 : 0;
+  const edgeCaseSecond = isSqrt(Number(second)) ? 1 : 0;
+
+  return String(secondSqrt - firstSqrt + 1 - edgeCaseFirst - edgeCaseSecond);
 };
 
 export const prob11 = ({
