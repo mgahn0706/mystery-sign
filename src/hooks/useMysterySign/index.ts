@@ -8,8 +8,6 @@ import {
   prob7,
   prob8,
   prob9,
-  prob10,
-  prob11,
 } from "../../MysterySignFunction";
 
 interface useMysterySignProps {
@@ -24,6 +22,8 @@ export default function useMysterySign({
   round,
 }: useMysterySignProps) {
   switch (round) {
+    case "0":
+      return String(Number(first) + Number(second));
     case "1":
       return prob1({ first, second });
     case "2":
@@ -42,10 +42,6 @@ export default function useMysterySign({
       return prob8({ first, second });
     case "9":
       return prob9({ first, second });
-    case "10":
-      return prob10({ first, second });
-    case "11":
-      return prob11({ first, second });
     default:
       return "Error";
   }

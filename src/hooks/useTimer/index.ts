@@ -11,7 +11,7 @@ export default function useTimer() {
     remainingTime > 0 ? 1000 : null
   );
 
-  const resetTimer = () => setRemainingTime(30);
+  const resetTimer = () => setRemainingTime(60);
 
   return { remainingTime, resetTimer };
 }

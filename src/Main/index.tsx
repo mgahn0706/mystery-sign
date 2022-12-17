@@ -8,7 +8,7 @@ import TargetProblem from "../TargetProblem";
 
 export default function Main() {
   const [hintList, setHintList] = useState<HintType[]>([]);
-  const [round, setRound] = useState("1");
+  const [round, setRound] = useState("0");
   //라운드 변경 시 확인 모달을 띄우고, 확인 시 힌트 리스트를 지우고 라운드를 변경합니다.
   const handleChange = (event) => {
     if (
@@ -39,13 +39,22 @@ export default function Main() {
         MYSTERY SIGN
       </Typography>
       <Typography fontFamily="Zen Dots" variant="body1">
-        Round {round}
+        {round === "0" ? "튜토리얼 라운드" : `Round ${round}`}
       </Typography>
       <Typography mt={1} fontFamily="Zen Dots" variant="body2">
         추러스 12월 정기모임
       </Typography>
       <Box sx={{ mt: 2 }} display="flex" justifyContent="center">
         <RadioGroup row name="use-radio-group" defaultValue="first">
+          <Radio
+            {...controlProps("0")}
+            sx={{
+              color: yellow[800],
+              "&.Mui-checked": {
+                color: yellow[600],
+              },
+            }}
+          />
           <Radio {...controlProps("1")} />
           <Radio {...controlProps("2")} />
           <Radio {...controlProps("3")} />
@@ -55,24 +64,6 @@ export default function Main() {
           <Radio {...controlProps("7")} />
           <Radio {...controlProps("8")} />
           <Radio {...controlProps("9")} />
-          <Radio
-            {...controlProps("10")}
-            sx={{
-              color: yellow[800],
-              "&.Mui-checked": {
-                color: yellow[600],
-              },
-            }}
-          />
-          <Radio
-            {...controlProps("11")}
-            sx={{
-              color: yellow[800],
-              "&.Mui-checked": {
-                color: yellow[600],
-              },
-            }}
-          />
         </RadioGroup>
       </Box>
       <Box display="flex" justifyContent="center" sx={{ mt: 2 }}>

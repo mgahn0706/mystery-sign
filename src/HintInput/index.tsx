@@ -19,9 +19,7 @@ export default function HintInput({ onEnterHint, round }: HintInputProps) {
     first: "",
     second: "",
   });
-  const [isPlayerOneFirst, setPlayerOneFirst] = useState(
-    Number(round) % 2 === 1
-  );
+  const [isPlayerOneFirst, setPlayerOneFirst] = useState(true);
 
   const validateInput = (input: string) => {
     if (!input) {

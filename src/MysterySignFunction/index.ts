@@ -22,24 +22,31 @@ export const prob3 = ({ first, second }: { first: string; second: string }) => {
 };
 
 export const prob4 = ({ first, second }: { first: string; second: string }) => {
-  let sumOfFirst = 0;
-  let sumOfSecond = 0;
-  for (let i = 0; i < first.length; i++) {
-    sumOfFirst += Number(first[i]);
-  }
+  const firstSqrt = Math.floor(Math.sqrt(Number(first)));
+  const secondSqrt = Math.floor(Math.sqrt(Number(second)));
 
-  for (let j = 0; j < second.length; j++) {
-    sumOfSecond += Number(second[j]);
-  }
+  const isSqrt = (num: number) => {
+    return Math.sqrt(num) % 1 === 0;
+  };
 
-  return String(sumOfFirst * sumOfSecond);
+  const edgeCaseFirst = isSqrt(Number(first)) ? 1 : 0;
+  const edgeCaseSecond = isSqrt(Number(second)) ? 1 : 0;
+
+  return String(
+    Math.abs(secondSqrt - firstSqrt) + edgeCaseFirst - edgeCaseSecond
+  );
 };
 
 export const prob5 = ({ first, second }: { first: string; second: string }) => {
-  const largerNum = Math.max(Number(first), Number(second));
-  const smallerNum = Math.min(Number(first), Number(second));
+  let result = "";
 
-  return String((largerNum + smallerNum) * (largerNum - smallerNum));
+  for (let i = 0; i < first.length; i++) {
+    for (let j = 0; j < second.length; j++) {
+      result += String(Number(first[i]) * Number(second[j]));
+    }
+  }
+
+  return result;
 };
 
 export const prob6 = ({ first, second }: { first: string; second: string }) => {
@@ -107,42 +114,4 @@ export const prob9 = ({ first, second }: { first: string; second: string }) => {
     10 * (Math.max(...firstArray) + Math.max(...secondArray)) +
       (Math.min(...firstArray) + Math.min(...secondArray))
   );
-};
-
-export const prob10 = ({
-  first,
-  second,
-}: {
-  first: string;
-  second: string;
-}) => {
-  const firstSqrt = Math.floor(Math.sqrt(Number(first)));
-  const secondSqrt = Math.floor(Math.sqrt(Number(second)));
-
-  const isSqrt = (num: number) => {
-    return Math.sqrt(num) % 1 === 0;
-  };
-
-  const edgeCaseFirst = isSqrt(Number(first)) ? 1 : 0;
-  const edgeCaseSecond = isSqrt(Number(second)) ? 1 : 0;
-
-  return String(secondSqrt - firstSqrt + 1 - edgeCaseFirst - edgeCaseSecond);
-};
-
-export const prob11 = ({
-  first,
-  second,
-}: {
-  first: string;
-  second: string;
-}) => {
-  let result = "";
-
-  for (let i = 0; i < first.length; i++) {
-    for (let j = 0; j < second.length; j++) {
-      result += String(Number(first[i]) * Number(second[j]));
-    }
-  }
-
-  return result;
 };

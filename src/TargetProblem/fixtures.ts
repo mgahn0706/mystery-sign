@@ -8,9 +8,9 @@ interface TargetProblemDataType {
 const TargetProblemData: TargetProblemDataType[] = [
   {
     round: 0,
-    first: "0",
-    second: "0",
-    description: "",
+    first: "1",
+    second: "2",
+    description: "연습문제: (첫번째 수)+(두번째 수)",
   },
   {
     round: 1,
@@ -26,21 +26,22 @@ const TargetProblemData: TargetProblemDataType[] = [
   },
   {
     round: 3,
-    first: "28",
-    second: "15",
+    first: "48",
+    second: "75",
     description: "각 숫자를 거꾸로 읽은 수를 서로 더한 것",
   },
   {
     round: 4,
-    first: "35",
-    second: "44",
-    description: "각 숫자에서 숫자들만 더한 값들을 서로 곱한 것",
+    first: "4",
+    second: "18",
+    description: "두 숫자 사이에 있는 제곱수의 개수",
   },
   {
     round: 5,
-    first: "8",
-    second: "10",
-    description: "(큰 수)^2 - (작은 수)^2, 또는 두 수의 합과 차의 곱",
+    first: "12",
+    second: "45",
+    description:
+      "(첫번째 수 첫째 자리)*(두번째 수 첫째 자리), (첫번째 수 첫째자리)*(두번째 수 둘째자리)...",
   },
   {
     round: 6,
@@ -66,19 +67,6 @@ const TargetProblemData: TargetProblemDataType[] = [
     second: "731",
     description:
       "각 수에서 (가장 큰 숫자)(가장 작은 숫자)로 두 자리수를 만들어 더한 값",
-  },
-  {
-    round: 10,
-    first: "4",
-    second: "18",
-    description: "두 숫자 사이에 있는 제곱수의 개수",
-  },
-  {
-    round: 11,
-    first: "12",
-    second: "45",
-    description:
-      "(첫번째 수 첫째 자리)*(두번째 수 첫째 자리), (첫번째 수 첫째자리)*(두번째 수 둘째자리)...",
   },
 ];
 
